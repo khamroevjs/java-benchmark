@@ -19,7 +19,17 @@ public class MyBenchmark {
             new Person("Alex Boz", 14, Gender.MALE),
             new Person("Jamie Goa", 99, Gender.MALE),
             new Person("Anna Cook", 7, Gender.FEMALE),
-            new Person("Zelda Brown", 120, Gender.FEMALE)
+            new Person("Zelda Brown", 120, Gender.FEMALE),
+            new Person("Stewart Burns", 49, Gender.MALE),
+            new Person("Timmy Ortega", 5, Gender.MALE),
+            new Person("Sara Cox", 29, Gender.FEMALE),
+            new Person("Garry Stevenson", 81, Gender.MALE),
+            new Person("Kate Brewer", 7, Gender.FEMALE),
+            new Person("Devin Armstrong", 86, Gender.MALE),
+            new Person("Megan Harrington", 54, Gender.FEMALE),
+            new Person("Orville Clark", 58, Gender.MALE),
+            new Person("Bonnie Salazar", 51, Gender.MALE),
+            new Person("Kenny Parsons", 27, Gender.MALE)
     );
 
     @Benchmark
@@ -37,5 +47,10 @@ public class MyBenchmark {
             }
         }
         return females;
+    }
+
+    @Benchmark
+    public List<Person> testParallelStream() {
+        return personList.parallelStream().filter(p -> p.gender() == Gender.FEMALE).toList();
     }
 }
